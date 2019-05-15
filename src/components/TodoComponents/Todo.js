@@ -7,6 +7,7 @@ const Todo = props => {
       id={props.id}
       className={`todo ${props.completed ? "completed" : ""}`}
       onDoubleClick={props.onDoubleClick}
+      tabIndex={0}
     >
       {props.children}
     </div>
