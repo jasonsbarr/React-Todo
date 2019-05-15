@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TodoList } from "./components/TodoComponents";
+import { TodoList, TodoForm } from "./components/TodoComponents";
 
 class App extends Component {
   constructor(props) {
@@ -29,8 +29,8 @@ class App extends Component {
     return (
       <div>
         <h1>Todo List</h1>
-        <TodoList />
-        {/* todo form */}
+        <TodoList todos={this.state.todos} />
+        <TodoForm />
       </div>
     );
   }
