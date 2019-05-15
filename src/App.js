@@ -47,13 +47,27 @@ class App extends Component {
     this.setState({ todoText: event.target.value });
   };
 
+  toggleTodoHandler = event => {
+    const todos = [...this.state.todos];
+    const completedIdx = todos.findIndex(todo => todo.id == event.target.id);
+    const completedTodo = { ...todos[completedIdx] };
+    completedTodo.completed = !completedTodo.completed;
+    this.setState({
+      todos: [
+        ...todos.slice(0, completedIdx),
+        completedTodo,
+        ...todos.slice(completedIdx + 1),
+      ],
+    });
+  };
+
   render() {
     return (
       <div>
         <h1>Todo List</h1>
         <TodoList
           todos={this.state.todos}
-          completeTodo={this.completeTodoHandler}
+          toggleTodoCompleted={this.toggleTodoHandler}
         />
         <div className="todoControls">
           <TodoForm

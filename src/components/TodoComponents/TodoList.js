@@ -11,7 +11,7 @@ const TodoList = props => {
           key={todo.id}
           id={todo.id}
           completed={todo.completed}
-          onDoubleClick={props.completeTodo}
+          onDoubleClick={props.toggleTodoCompleted}
         >
           {todo.task}
         </Todo>
