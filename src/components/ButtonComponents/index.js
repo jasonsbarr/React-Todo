@@ -1,3 +1,4 @@
 import AddTodoButton from "./AddTodoButton";
+import ClearFinishedButton from "./ClearFinishedButton";
 
-export { AddTodoButton };
+export { AddTodoButton, ClearFinishedButton };
