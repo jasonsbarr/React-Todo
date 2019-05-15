@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { TodoList, TodoForm } from "./components/TodoComponents";
+import { ClearFinishedButton } from "./components/ButtonComponents";
 
 class App extends Component {
   constructor(props) {
@@ -30,7 +31,10 @@ class App extends Component {
       <div>
         <h1>Todo List</h1>
         <TodoList todos={this.state.todos} />
-        <TodoForm />
+        <div className="todoControls">
+          <TodoForm />
+          <ClearFinishedButton />
+        </div>
       </div>
     );
   }
