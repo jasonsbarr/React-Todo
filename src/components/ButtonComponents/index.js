@@ -1,3 +1,3 @@
-import Button from "./Button";
+import AddTodoButton from "./AddTodoButton";
 
-export { Button };
+export { AddTodoButton };
