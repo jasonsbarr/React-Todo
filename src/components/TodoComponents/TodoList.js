@@ -6,7 +6,16 @@ const TodoList = props => {
   const { todos } = props;
   return (
     <div className="todos">
-      <Todo />
+      {todos.map(todo => (
+        <Todo
+          key={todo.id}
+          id={todo.id}
+          completed={todo.completed}
+          onDoubleClick={props.completeTodo}
+        >
+          {todo.task}
+        </Todo>
+      ))}
     </div>
   );
 };
