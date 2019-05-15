@@ -61,6 +61,11 @@ class App extends Component {
     });
   };
 
+  clearFinishedHandler = () =>
+    this.setState({
+      todos: this.state.todos.filter(todo => !todo.completed),
+    });
+
   render() {
     return (
       <div>
@@ -75,7 +80,7 @@ class App extends Component {
             inputVal={this.state.todoText}
             changeTodoText={this.todoChangeHandler}
           />
-          <ClearFinishedButton />
+          <ClearFinishedButton onClick={this.clearFinishedHandler} />
         </div>
       </div>
     );
