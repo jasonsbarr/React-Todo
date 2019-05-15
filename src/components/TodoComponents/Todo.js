@@ -5,7 +5,7 @@ const Todo = props => {
   return (
     <div
       id={props.id}
-      className={props.completed ? "completed" : ""}
+      className={`todo ${props.completed ? "completed" : ""}`}
       onDoubleClick={props.onDoubleClick}
     >
       {props.children}
