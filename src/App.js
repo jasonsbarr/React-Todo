@@ -28,7 +28,7 @@ class App extends Component {
     };
   }
 
-  onAddTodo = event => {
+  addTodoHandler = event => {
     event.preventDefault();
     const newTodo = {
       task: this.state.todoText,
@@ -51,10 +51,13 @@ class App extends Component {
     return (
       <div>
         <h1>Todo List</h1>
-        <TodoList todos={this.state.todos} />
+        <TodoList
+          todos={this.state.todos}
+          completeTodo={this.completeTodoHandler}
+        />
         <div className="todoControls">
           <TodoForm
-            onAddTodo={this.onAddTodo}
+            onAddTodo={this.addTodoHandler}
             inputVal={this.state.todoText}
             changeTodoText={this.todoChangeHandler}
           />
