@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { TodoList } from "./components/TodoComponents";
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class App extends Component {
     return (
       <div>
         <h1>Todo List</h1>
-        {/* todo items */}
+        <TodoList />
         {/* todo form */}
       </div>
     );
