@@ -1,4 +1,5 @@
 import React from "react";
+import { AddTodoButton } from "../ButtonComponents";
 
 const TodoForm = props => {
   return (
@@ -14,6 +15,7 @@ const TodoForm = props => {
         name="addTodo"
         id="addTodo"
       />
+      <AddTodoButton type="submit" onClick={props.onAddTodo} />
     </form>
   );
 };
