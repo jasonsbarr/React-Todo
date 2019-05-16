@@ -1,9 +1,11 @@
 import React from "react";
 
 const Button = props => {
-  const classes = `btn ${props.classes ? props.classes : ""}`;
+  const { classes, onClick, ...rest } = props;
+  const classNames = `btn ${classes ? classes : ""}`;
+  const doOnClick = onClick ? { onClick } : {};
   return (
-    <button className={classes} onClick={props.onClick}>
+    <button className={classNames} {...doOnClick} {...rest}>
       {props.children}
     </button>
   );
