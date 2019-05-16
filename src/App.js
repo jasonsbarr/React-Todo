@@ -20,10 +20,6 @@ class App extends Component {
     this.setState({ todos });
   };
 
-  todoChangeHandler = event => {
-    this.setState({ todoText: event.target.value });
-  };
-
   toggleTodoHandler = event => {
     this.setState({
       todos: this.state.todos.map(todo =>
