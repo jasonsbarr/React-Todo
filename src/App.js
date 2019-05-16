@@ -31,16 +31,12 @@ class App extends Component {
   };
 
   toggleTodoHandler = event => {
-    const todos = [...this.state.todos];
-    const completedIdx = todos.findIndex(todo => todo.id == event.target.id);
-    const completedTodo = { ...todos[completedIdx] };
-    completedTodo.completed = !completedTodo.completed;
     this.setState({
-      todos: [
-        ...todos.slice(0, completedIdx),
-        completedTodo,
-        ...todos.slice(completedIdx + 1),
-      ],
+      todos: this.state.todos.map(todo =>
+        todo.id == event.target.id
+          ? { ...todo, completed: !todo.completed }
+          : todo,
+      ),
     });
   };
 
