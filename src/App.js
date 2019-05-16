@@ -5,25 +5,19 @@ import { ClearFinishedButton } from "./components/ButtonComponents";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      todos: [],
-      todoText: "",
-    };
+    this.state = { todos: [] };
   }
 
   addTodoHandler = event => {
     event.preventDefault();
     const newTodo = {
-      task: this.state.todoText,
+      task: event.target.addTodo.value,
       id: Date.now(),
       completed: false,
     };
 
     const todos = [...this.state.todos, newTodo];
-    this.setState({
-      todos,
-      todoText: "",
-    });
+    this.setState({ todos });
   };
 
   todoChangeHandler = event => {
