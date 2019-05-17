@@ -9,10 +9,16 @@ class TodoForm extends Component {
 
   changeHandler = event => this.setState({ text: event.target.value });
 
+  handleAddTodo = event => {
+    event.preventDefault();
+    this.props.onAddTodo(event);
+    this.setState({ text: "" });
+  };
+
   render() {
     return (
       <form
-        onSubmit={this.props.onAddTodo}
+        onSubmit={this.handleAddTodo}
         name="todoForm"
         id="todoForm"
         className="todoForm"

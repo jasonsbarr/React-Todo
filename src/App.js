@@ -5,11 +5,25 @@ import { ClearFinishedButton } from "./components/ButtonComponents";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { todos: [] };
+    this.state = {
+      todos: [],
+      alert: "Loading...",
+    };
   }
 
+  componentDidMount() {
+    const todos = this.fetchTodos();
+    const newState = todos
+      ? { todos, alert: "" }
+      : { todos: [], alert: "No todos found!" };
+    this.setState(newState);
+  }
+
+  fetchTodos = () => JSON.parse(localStorage.getItem("todos"));
+
+  saveTodos = todos => localStorage.setItem("todos", JSON.stringify(todos));
+
   addTodoHandler = event => {
-    event.preventDefault();
     const newTodo = {
       task: event.target.addTodo.value,
       id: Date.now(),
@@ -18,22 +32,24 @@ class App extends Component {
 
     const todos = [...this.state.todos, newTodo];
     this.setState({ todos });
+    this.saveTodos(todos);
   };
 
   toggleTodoHandler = event => {
-    this.setState({
-      todos: this.state.todos.map(todo =>
-        todo.id == event.target.id
-          ? { ...todo, completed: !todo.completed }
-          : todo,
-      ),
-    });
+    const todos = this.state.todos.map(todo =>
+      todo.id == event.target.id
+        ? { ...todo, completed: !todo.completed }
+        : todo,
+    );
+    this.setState({ todos });
+    this.saveTodos(todos);
   };
 
-  clearFinishedHandler = () =>
-    this.setState({
-      todos: this.state.todos.filter(todo => !todo.completed),
-    });
+  clearFinishedHandler = () => {
+    const todos = this.state.todos.filter(todo => !todo.completed);
+    this.setState({ todos });
+    this.saveTodos(todos);
+  };
 
   render() {
     return (
@@ -42,6 +58,7 @@ class App extends Component {
         <TodoList
           todos={this.state.todos}
           toggleTodoCompleted={this.toggleTodoHandler}
+          alert={this.state.alert}
         />
         <div className="todoControls">
           <TodoForm
